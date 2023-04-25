@@ -1,0 +1,38 @@
+Amend Instruction - Modifies one or more components of an order in the matching engine
+		  - A/<Order ID>/<Symbol>/<Order Type>/<Side>/<Price>/<Quantity>/<Timestamp>
+		  - A -> Amend instruction code -> Character value
+		  - <Order ID> -> Unique identifier of the order to be modified -> String value -> Non-Optional
+		  - <Order Type> -> Type of the order to be modified -> Character value -> Optional -> Valid order types are E(Exact), I(Insert or cancel), L(Limit), M(Market), U(Exact insert or cancel)
+		  - <Side> -> Side of the order to be modified -> Character value -> Optional -> Valid sides are B(Buy), S(Sell)
+		  - <Price> -> Price of the order to be modified -> Decimal value -> Optional -> Cannot be zero or negative
+		  - <Quantity> -> Quantity of the order to be modified -> Decimal value -> Optional -> Cannot be zero or negative
+		  - <Timestamp> -> Timestamp of the order to be modified -> Integer value -> Optional -> Must be in the range of [0, 86399]
+
+Cancel Instruction - Cancels an order in the matching engine
+		   - C/<Order ID>/<Timestamp>
+		   - C -> Cancel instruction code
+		   - <Order ID> -> Unique identifier of the order to be cancelled -> String value -> Optional
+		   - <Timestamp> -> Timestamp of the order to be modified, will not be considered if the matching engine's timestamp configuration is IGNORE -> Integer value -> Optional -> Must be in the range of [0, 86399]
+
+Match Instruction - Matches orders in the matching engine
+		  - M/<Symbol>/<Timestamp>
+		  - M -> Match instruction code
+		  - <Symbol> -> Symbol of the orders to be matched -> String value -> Optional
+		  - <Timestamp> -> Timestamp limit of the orders to be matched, will not be considered if the matching engine's timestamp configuration is IGNORE -> Integer value -> Optional -> Must be in the range of [0, 86399]
+
+Order Instruction - Inserts a new order into the matching engine
+		  - O/<Order ID>/<Symbol>/<Order Type>/<Side>/<Price>/<Quantity>/<Timestamp>
+		  - O -> Order instruction code
+		  - <Order ID> -> Unique identifier of the order to be inserted -> String value -> Non-Optional
+		  - <Symbol> -> Underlying symbol associated with the order to be inserted -> String value -> Non-Optional
+		  - <Order Type> -> Type of the order to be inserted -> Character value -> Non-Optional -> Valid order types are E(Exact), I(Insert or cancel), L(Limit), M(Market), U(Exact insert or cancel)
+		  - <Side> -> Side of the order to be inserted -> Character value -> Non-Optional -> Valid sides are B(Buy), S(Sell)
+		  - <Price> -> Price of the order to be inserted -> Decimal value -> Non-Optional -> Cannot be zero or negative
+		  - <Quantity> -> Quantity of the order to be inserted -> Decimal value -> Non-Optional -> Cannot be zero or negative
+		  - <Timestamp> -> Timestamp of the order to be inserted, will not be considered if the matching engine's timestamp configuration is IGNORE -> Integer value -> Optional with IGNORE timestamp configuration, Non-Optional otherwise -> Must be in the range of [0, 86399]
+
+Query Instruction - Queries the state of the order books in the matching engine
+		  - Q/<Symbol>/<Timestamp>
+		  - Q -> Query instruction code
+		  - <Symbol> -> Underlying symbol associated with the order(s) to be queried -> String value -> Optional
+		  - <Timestamp> -> Timestamp limit of the order(s) to be queried, will not be considered if the matching engine's timestamp configuration is IGNORE -> Integer value -> Optional -> Must be in the range of [0, 86399]

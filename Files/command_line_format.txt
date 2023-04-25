@@ -1,0 +1,28 @@
+Strict-Amend Command Line Argument - Matching engine will change the position priority of an order from amending any of its components
+				   - -A -> Strict-Amend command line argument code
+
+Ignore-Errors Command Line Argument - Matching engine will NOT output any errors from processing
+				    - -E -> Ignore-Errors command line argument code
+
+Instruction-File Command Line Argument - Matching engine will read, process, and output the results of matching engine instructions from a file specified by its path
+				       - -I <Instruction File Path>
+				       - -I -> Instruction-File command line argument code
+				       - <Instruction File Path> -> Path to file containing matching engine instructions
+
+Insert-Match Command Line Argument - Matching engine will match orders as soon as they are inserted
+				   - -M -> Insert-Match command line argument code
+
+Output-File Command Line Argument - Matching engine will redirect output to a file instead of stdout (console)
+				  - -O <Output File Path>
+				  - -O -> Output-File command line argument code
+				  - <Output File Path> -> Path to file that will contain matching engine output
+
+Process-Error Command Line Argument - Matching engine will continue processing when errors occur (By default the matching engine wil NOT process further when an error occurs)
+				    - -P -> Process-Error command line argument code
+
+Timestamp-Configuration Command Line Argument - Matching enigne will configure use of an order's timestamp that can affect insertion, search, removal, and matching of orders
+					      - -T <STRICT|RELAX|IGNORE>
+					      - -T -> Timestamp-Configuration command line argument code
+					      - STRICT -> Strict timestamp configuration -> Orders have to be inserted in strictly increasing timestamps with duplicate timestamps allowed, timestamp will be considered in insertion, search, removal, and matching of orders
+					      - RELAX -> Relax timestamp configuration -> Orders do NOT have to be inserted in strictly increasing timestamps with duplicate timestamps allowed, timestamp will be considered in insertion, search, removal, and matching of orders
+					      - IGNORE -> Ignore timestamp configuration -> Orders do NOT need the timestamp component even though it can still be present in instructions, timestamp will NOT be considered in insertion, search, removal, and matching of orders
